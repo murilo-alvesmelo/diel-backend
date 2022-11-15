@@ -23,6 +23,14 @@ Instale as dependências
   $ npm install
 ```
 
+Crie uma database 'tasks' no seu pgAdmin local
+
+Ao criar a database 'tasks', execute o comando na pasta do projeto
+
+```bash
+  $ knex migrate:latest
+```
+
 Inicie a aplicação
 
 ```bash
@@ -60,6 +68,11 @@ exports.up = function(knex) {
 ```
 
 ### Rotas do CRUD de tasks
+
+#### Visualizar todas as tasks
+```http
+   GET http://localhost:3000/alltasks
+```
 
 #### Envia os parâmetros para API para o cadastro da task
 ```http
