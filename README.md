@@ -95,7 +95,7 @@ exports.up = function(knex) {
 #### Deleta a task pelo ID
 
 ```http
-   DELETE http://localhost:3000/users/${id}
+   DELETE http://localhost:3000/tasks/${id}
 ```
 
 | Parâmetro   | Tipo       | Descrição                                   |
