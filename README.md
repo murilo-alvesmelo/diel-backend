@@ -8,13 +8,13 @@ Api que alimenta o projeto [react-native-tasks](https://github.com/murilo-alvesm
 Clone o projeto
 
 ```bash
-  $ git clone https://github.com/murilo-alvesmelo/tasks-backend.git
+  $ git clone https://github.com/murilo-alvesmelo/diel-backend.git
 ```
 
 Entre no diretório do projeto
 
 ```bash
-  $ cd tasks-backend
+  $ cd diel-backend
 ```
 
 Instale as dependências
@@ -37,11 +37,6 @@ Inicie a aplicação
     - body-parser
     - cors
     - consign
-- Segurança
-    - bcrypt-nodejs
-    - jwt-simple
-    - passport
-    - passport-jwt
 - Conexão com o database
     - pg
     - knex
@@ -49,19 +44,6 @@ Inicie a aplicação
 
 Para essa aplicação e criada uma integração com um servidor de banco de dados Postgres no localhost da sua maquina:
 
-**Entidades da tabela users:**
-
-```javascript
-
-exports.up = function(knex) {
-    return knex.schema.createTable('users', table =>{
-        table.increments('id').primary()
-        table.string('name').notNullable()
-        table.string('email').notNullable().unique()
-        table.string('password').notNullable()
-      })
-};
-```
 **Entidades da tabela tasks:**
 
 ```javascript
@@ -69,32 +51,13 @@ exports.up = function(knex) {
 exports.up = function(knex) {
   return knex.schema.createTable('tasks', table => {
     table.increments('id').primary()
-    table.string('desc').notNullable()
-    table.dateTime('estimatedAt')
-    table.dateTime('doneAt')
-    table.integer('userId').references('id').inTable('users').notNullable()
+      table.string('desc').notNullable()
+      table.dateTime('estimatedAt')
+      table.time('duracao')
+      table.dateTime('doneAt')
   })
 };
 ```
-
-### Rotas do CRUD de users
-
-#### Envia os parâmetros para API para o cadastro do usuário
-```http
-   POST http://localhost:3000/signup
-```
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `user`   | `object` | **Obrigatório**|
-
-#### Envia os parâmetros para API para o login do usuário
-```http
-   POST http://localhost:3000/login
-```
-| Parâmetro   | Tipo       | Descrição                                   |
-| :---------- | :--------- | :------------------------------------------ |
-| `user`   | `object` | **Obrigatório**|
-
 
 ### Rotas do CRUD de tasks
 
@@ -105,7 +68,6 @@ exports.up = function(knex) {
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
 | `task`   | `object` | **Obrigatório**|
-| `Bearer Token` | `string`| **Obrigatório**|
 
 
 #### Faz uma atualização no campo escolhido da task 
@@ -115,7 +77,6 @@ exports.up = function(knex) {
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
 | `task`   | `object` | **Obrigatório**|
-| `Bearer Token` | `string`| **Obrigatório**|
 | `id`      | `number` | **Obrigatório**  |
 
 #### Deleta o produto pelo ID
@@ -127,7 +88,6 @@ exports.up = function(knex) {
 | Parâmetro   | Tipo       | Descrição                                   |
 | :---------- | :--------- | :------------------------------------------ |
 | `task`   | `object` | **Obrigatório**|
-| `Bearer Token` | `string`| **Obrigatório**|
 | `id`      | `number` | **Obrigatório**|
 
 ## Autores
