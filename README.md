@@ -79,7 +79,7 @@ exports.up = function(knex) {
 | `task`   | `object` | **Obrigatório**|
 | `id`      | `number` | **Obrigatório**  |
 
-#### Deleta o produto pelo ID
+#### Deleta a task pelo ID
 
 ```http
    DELETE http://localhost:3000/users/${id}
